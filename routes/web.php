@@ -27,6 +27,14 @@ Route::get('/repetir/{nome}/{n}', function ($nome, $n){
 
 Route::get('/nomecomregra/{nome}/{n}', function($nome, $n){
   for($i=0; $i<$n; $i++){
-      echo "<h1>Ola, $nome!</h1>";
+      echo "<h1>Ola, $nome! ($i)</h1>";
   }
-})->where('n', '[0-9]+');
+})->where('n', '[0-9]+')->where('nome', '[A-Za-z]+');
+
+Route::get('/nomesemregra/{nome?}', function($nome=null){
+  if(isset($nome)){
+      echo "<h1>Ola, $nome!</h1>";
+  }else{
+    echo "Você não passou um nome!";
+  }
+});

@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Aula 24
+Route::get('/nome', 'MeuControlador@getNome');

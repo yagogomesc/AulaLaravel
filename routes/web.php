@@ -52,5 +52,17 @@ Route::prefix('app')->group(function(){
         return "Meu about";
     });
 
+});
 
+Route::redirect('/aqui', '/ola', 301);
+
+Route::view('/hello', 'hello');
+
+Route::view('/viewnome', 'hellonome',
+            ['nome' =>'Yago', 'sobrenome'=>'Gomes']);
+
+Route::get('/hellonome/{nome}/{sobrenome}', function($nome, $sn){
+      return view('hellonome',
+                  ['nome' => $nome,
+                  'sobrenome'=> $sn]);
 });

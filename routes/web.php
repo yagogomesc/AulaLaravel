@@ -104,3 +104,13 @@ Route::post('/rest/imprimir', function(Request $req){
   $idade = $req->input('idade');
     return "Hello $nome ($idade)!! (POST)";
 });
+
+//Aula 20
+
+Route::match(['get', 'post'], '/rest/hello2', function(){
+      return "Hello World 2";
+});
+
+Route::any('/rest/hello3', function(){
+      return "Hello World 3";
+});

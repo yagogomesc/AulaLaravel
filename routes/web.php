@@ -57,7 +57,7 @@ Route::prefix('app')->group(function(){
 Route::redirect('/aqui', '/ola', 301);
 
 Route::view('/hello', 'hello');
-
+//Aula 16
 Route::view('/viewnome', 'hellonome',
             ['nome' =>'Yago', 'sobrenome'=>'Gomes']);
 
@@ -66,3 +66,5 @@ Route::get('/hellonome/{nome}/{sobrenome}', function($nome, $sn){
                   ['nome' => $nome,
                   'sobrenome'=> $sn]);
 });
+
+//Aula 17

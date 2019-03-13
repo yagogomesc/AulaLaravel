@@ -38,3 +38,19 @@ Route::get('/nomesemregra/{nome?}', function($nome=null){
     echo "Você não passou um nome!";
   }
 });
+
+//Coloca as rotas dentro de app, organizando de forma hierarquica as paginas dentro de uma principal
+Route::prefix('app')->group(function(){
+
+    Route::get("/", function(){
+        return "Pagina principal do app";
+    });
+    Route::get("profile", function(){
+        return "Pagina profile";
+    });
+    Route::get("about", function(){
+        return "Meu about";
+    });
+
+
+});

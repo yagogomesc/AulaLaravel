@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -93,4 +95,12 @@ Route::patch('/rest/hello', function(){
 
 Route::options('/rest/hello', function(){
     return "Hello (OPTIONS)";
+});
+
+//Aula 19
+
+Route::post('/rest/imprimir', function(Request $req){
+  $nome = $req->input('nome');
+  $idade = $req->input('idade');
+    return "Hello $nome ($idade)!! (POST)";
 });

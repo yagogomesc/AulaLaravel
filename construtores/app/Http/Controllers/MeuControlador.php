@@ -26,7 +26,8 @@ class MeuControlador extends Controller
 
     public function getNomeByID($id){
       $v = ["Mario", "Edson", "Roberto", "Jean"];
-
-
+      if($id >= 0 && $id < count($v))
+          return $v[$id];
+      return "Não encontrado";
     }
 }

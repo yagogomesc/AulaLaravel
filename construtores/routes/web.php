@@ -16,3 +16,8 @@ Route::get('/', function () {
 });
 //Aula 24
 Route::get('/nome', 'MeuControlador@getNome');
+
+//Aula 25
+Route::get('/idade', 'MeuControlador@getIdade');
+
+Route::get('/multiplicar/{n1}/{n2}', 'MeuControlador@multiplicar');

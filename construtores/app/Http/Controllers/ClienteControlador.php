@@ -62,7 +62,7 @@ class ClienteControlador extends Controller
      */
     public function edit($id)
     {
-        //
+        return "Formulario para editar cliente com ID ". $id;
     }
 
     /**
@@ -74,7 +74,10 @@ class ClienteControlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $s = "Atualizar Cliente com id $id: ";
+      $s .= "Nome: ". $request->input('nome') . " e ";
+      $s .= "Idade: ". $request->input('idade');
+      return response($s, 201);
     }
 
     /**
@@ -85,6 +88,10 @@ class ClienteControlador extends Controller
      */
     public function destroy($id)
     {
-        //
+        return response("Apagado cliente com id $id", 200);
+    }
+
+    public function requisitar(Request $request){
+        echo "nome: " . $request->input('nome');
     }
 }

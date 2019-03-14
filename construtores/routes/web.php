@@ -29,3 +29,5 @@ Route::get('/nomes/{id}', 'MeuControlador@getNomeByID');
 Route::resource('/cliente', 'ClienteControlador');
 
 //Aula 27
+
+Route::post('cliente/requisitar', 'ClienteControlador@requisitar');

@@ -27,3 +27,5 @@ Route::get('/nomes/{id}', 'MeuControlador@getNomeByID');
 //Aula 26
 
 Route::resource('/cliente', 'ClienteControlador');
+
+//Aula 27

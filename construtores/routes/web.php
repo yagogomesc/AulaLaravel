@@ -23,3 +23,7 @@ Route::get('/idade', 'MeuControlador@getIdade');
 Route::get('/multiplicar/{n1}/{n2}', 'MeuControlador@multiplicar');
 
 Route::get('/nomes/{id}', 'MeuControlador@getNomeByID');
+
+//Aula 26
+
+Route::resource('/cliente', 'ClienteControlador');

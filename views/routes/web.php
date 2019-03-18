@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/primeiraview', function(){
+    return view('minhaview');
+});

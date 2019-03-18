@@ -18,3 +18,16 @@ Route::get('/', function () {
 Route::get('/primeiraview', function(){
     return view('minhaview');
 });
+
+Route::get('/ola/{nome}/{sobrenome}', function($nome, $sobrenome){
+    /*
+    return view('minhaview')
+            ->with('nome', $nome)
+            ->with('sobrenome', $sobrenome);
+    */
+    /*
+    $parametros = ['nome'=>$nome, 'sobrenome'=>$sobrenome];
+    return view('minhaview', $parametros);
+    */
+    return view('minhaview', compact('nome', 'sobrenome'));
+});

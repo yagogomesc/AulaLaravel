@@ -5,13 +5,29 @@
 </head>
 <body>
 
-  @component('components.meucomponente',['tipo'=>'danger', 'titulo' => 'Erro Fatal'])
+  @alerta(['tipo'=>'danger', 'titulo' => 'Erro Fatal'])
     <strong>Erro: </strong> Sua mensagem de erro.
-  @endcomponent
+  @endalerta
 
-  @component('components.meucomponente',['tipo'=>'warning', 'titulo' => 'Erro Quase Fatal'])
+  @alerta(['tipo'=>'warning', 'titulo' => 'Erro Quase Fatal'])
     <strong>Erro: </strong> Sua mensagem de erro.
-  @endcomponent
+  @endalerta
+
+  @alerta(['tipo'=>'success', 'titulo' => 'Erro Quase Fatal'])
+    <strong>Erro: </strong> Sua mensagem de erro.
+  @endalerta
+
+  @alerta(['tipo'=>'primary', 'titulo' => 'Erro Quase Fatal'])
+    <strong>Erro: </strong> Sua mensagem de erro.
+  @endalerta
+
+  @alerta(['tipo'=>'secondary', 'titulo' => 'Erro Quase Fatal'])
+    <strong>Erro: </strong> Sua mensagem de erro.
+  @endalerta
+
+  @alerta(['tipo'=>'info', 'titulo' => 'Erro Quase Fatal'])
+    <strong>Erro: </strong> Sua mensagem de erro.
+  @endalerta
 
   <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 </body>

@@ -24,4 +24,14 @@ class ProdutoController extends Controller
         return view('secao_produtos', compact('palavra'));
 
     }
+
+    public function mostrar_opcoes(){
+        return view('mostrar_opcoes');
+    }
+
+    public function opcoes($opcao){
+
+        return view('opcoes',compact('opcao'));
+
+    }
 }

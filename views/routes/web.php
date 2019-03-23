@@ -43,3 +43,7 @@ Route::get('/produtos','ProdutoController@listar');
 
 Route::get('/secaoprodutos/{palavra}',
             'ProdutoController@secaoprodutos');
+
+Route::get('/mostraropcoes', 'ProdutoController@mostrar_opcoes');
+
+Route::get('/opcoes/{opcao}', 'ProdutoController@opcoes');

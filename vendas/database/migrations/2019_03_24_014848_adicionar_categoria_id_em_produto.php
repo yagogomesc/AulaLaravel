@@ -14,7 +14,7 @@ class AdicionarCategoriaIdEmProduto extends Migration
     public function up()
     {
         Schema::table('produtos', function (Blueprint $table) {
-            $table->unsignedBigInteger('categoria_id')->unsigned();
+            $table->BigInteger('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');
         });
     }

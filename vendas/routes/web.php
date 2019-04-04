@@ -153,3 +153,10 @@ Route::get('categorias', function(){
     }
 
 });
+//Aula 59
+Route::get('novascategorias', function(){
+    $id = DB::table('categorias')->insertGetId(
+      ['nome'=>'Carros']
+    );
+    echo "novo ID = $id <br>";
+});

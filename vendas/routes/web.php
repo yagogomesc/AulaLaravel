@@ -154,9 +154,23 @@ Route::get('categorias', function(){
 
 });
 //Aula 59
-Route::get('novascategorias', function(){
+Route::get('/novascategorias', function(){
     $id = DB::table('categorias')->insertGetId(
       ['nome'=>'Carros']
     );
     echo "novo ID = $id <br>";
+});
+
+//Aula 60
+Route::get('/atualizandocategorias', function(){
+    $cat = DB::table('categorias')->where('id', 1)->first();
+    echo "<p>Antes da atualização</p>";
+    echo "id: " . $cat->id . "; ";
+    echo "Nome: " . $cat->nome . "<br>";
+    DB::table('categorias')->where('id', 1)->update(['nome'=>'Roupas infantis']);
+
+    $cat = DB::table('categorias')->where('id', 1)->first();
+    echo "<p>Depois da atualização</p>";
+    echo "id: " . $cat->id . "; ";
+    echo "Nome: " . $cat->nome . "<br>";
 });

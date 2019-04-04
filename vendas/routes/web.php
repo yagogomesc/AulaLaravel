@@ -174,3 +174,29 @@ Route::get('/atualizandocategorias', function(){
     echo "id: " . $cat->id . "; ";
     echo "Nome: " . $cat->nome . "<br>";
 });
+//Aula 61
+Route::get('/removendocategorias', function(){
+    echo "<p>Antes</p>";
+    $cats = DB::table('categorias')->get();
+
+    foreach($cats as $c){
+
+      echo "Id: " . $c->id . "; ";
+      echo "Nome: ". $c->nome . "<br/>";
+
+    }
+    echo '<hr>';
+
+    DB::table('categorias')->whereNotIn('id', [1,2,3,4,5,6])->delete();
+
+
+    echo "<p>Depois da atualização</p>";
+    $cats = DB::table('categorias')->get();
+
+    foreach($cats as $c){
+
+      echo "Id: " . $c->id . "; ";
+      echo "Nome: ". $c->nome . "<br/>";
+
+    }
+});

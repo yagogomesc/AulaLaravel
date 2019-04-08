@@ -50,3 +50,32 @@ Route::get('/remover/{id}', function($id){
     endif;
     //return redirect('/');
 });
+//Aula 68
+Route::get('/categoriapornome/{nome}', function($nome){
+    $categorias = Categoria::where('nome', $nome)->get();
+    foreach($categorias as $c):
+      echo "id: " . $c->id . ", " ;
+      echo "nome: " . $c->nome . "<br>";
+    endforeach;
+});
+
+Route::get('/categoriaidmaiorque/{id}', function($id){
+    $categorias = Categoria::where('id', '>=', $id)->get();
+    foreach($categorias as $c):
+      echo "id: " . $c->id . ", " ;
+      echo "nome: " . $c->nome . "<br>";
+    endforeach;
+
+    $count = Categoria::where('id', '>=',$id)->count();
+    echo "<h1>Count: $count</h1>";
+    $max = Categoria::where('id', '>=',$id)->max('id');
+    echo "<h1>Count: $max</h1>";
+});
+
+Route::get('/ids123', function(){
+    $categorias = Categoria::find([1,2,3]);
+    foreach($categorias as $c):
+      echo "id: " . $c->id . ", " ;
+      echo "nome: " . $c->nome . "<br>";
+    endforeach;
+});

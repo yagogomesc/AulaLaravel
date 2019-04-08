@@ -27,3 +27,26 @@ Route::get('/categoria/{id}', function($id){
     endif;
     //return redirect('/');
 });
+//Aula 67
+Route::get('/atualizar/{id}/{nome}', function($id, $nome){
+    $cat = Categoria::find($id);
+    if(isset($cat)):
+      $cat->nome = $nome;
+      $cat->save();
+      return redirect('/');
+    else:
+      echo "<h1>Categoria não encontrada</h1>";
+    endif;
+    //return redirect('/');
+});
+
+Route::get('/remover/{id}', function($id){
+    $cat = Categoria::find($id);
+    if(isset($cat)):
+      $cat->delete();
+      return redirect('/');
+    else:
+      echo "<h1>Categoria não encontrada</h1>";
+    endif;
+    //return redirect('/');
+});

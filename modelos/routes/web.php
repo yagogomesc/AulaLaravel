@@ -79,3 +79,16 @@ Route::get('/ids123', function(){
       echo "nome: " . $c->nome . "<br>";
     endforeach;
 });
+
+Route::get('/todas', function () {
+    $categorias = Categoria::withTrashed()->get();
+    foreach($categorias as $c){
+        echo "id: " . $c->id.", ";
+        echo "nome: " . $c->nome;
+        if($c->trashed()):
+          echo '(apagado)<br>';
+        else:
+          echo '<br>';
+        endif;
+    }
+});

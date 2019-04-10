@@ -126,3 +126,13 @@ Route::get('/restaurar/{id}', function($id){
       echo "<h1>Categoria não encontrada</h1>";
     endif;
 });
+//Aula 73 - apagar permanente
+Route::get('/apagarpermanente/{id}', function($id){
+    $cat = Categoria::withTrashed()->find($id);
+    if(isset($cat)):
+      $cat->forceDelete();
+      return redirect('/todas');
+    else:
+      echo "<h1>Categoria não encontrada</h1>";
+    endif;
+});

@@ -2,6 +2,7 @@
   <head>
       <link href="{{asset('css/app.php')}}" rel="stylesheet">
       <title>Cadastro de Produtos</title>
+      <meta name="csrf-token" content="{{csrf_token()}}">
   </head>
   <body>
 

@@ -9,13 +9,13 @@
 
   <div class="collapse navbar-collapse" id="navbar">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home</a>
+      <li @if($current=="home") class="nav-item active" @else class="nav-item"@endif>
+        <a class="nav-link" href="/AulaLaravel/cadastro/public/">Home</a>
       </li>
-      <li class="nav-item">
+      <li @if($current=="produtos") class="nav-item active" @else class="nav-item"@endif>
         <a class="nav-link" href="/AulaLaravel/cadastro/public/produtos">Produtos</a>
       </li>
-      <li class="nav-item">
+      <li @if($current=="categorias") class="nav-item active" @else class="nav-item"@endif>
         <a class="nav-link" href="/AulaLaravel/cadastro/public/categorias">Categorias</a>
       </li>
 

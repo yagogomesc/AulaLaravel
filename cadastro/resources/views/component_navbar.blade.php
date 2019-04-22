@@ -13,10 +13,10 @@
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/produtos">Produtos</a>
+        <a class="nav-link" href="/AulaLaravel/cadastro/public/produtos">Produtos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/categorias">Categorias</a>
+        <a class="nav-link" href="/AulaLaravel/cadastro/public/categorias">Categorias</a>
       </li>
 
     </ul>

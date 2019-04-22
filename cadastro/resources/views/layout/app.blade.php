@@ -1,8 +1,13 @@
 <html>
   <head>
-      <link href="{{asset('css/app.php')}}" rel="stylesheet">
+      <link href="{{asset('css/app.css')}}" rel="stylesheet">
       <title>Cadastro de Produtos</title>
       <meta name="csrf-token" content="{{csrf_token()}}">
+      <style>
+        body{
+          padding: 20px
+        }
+      </style>
   </head>
   <body>
 

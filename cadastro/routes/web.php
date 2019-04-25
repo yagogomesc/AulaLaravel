@@ -22,3 +22,5 @@ Route::get('/categorias', 'ControllerCategoria@index');
 Route::get('/categorias/novo', 'ControllerCategoria@create');
 
 Route::post('/categorias', 'ControllerCategoria@store');
+
+Route::get('/categorias/apagar/{id}', 'ControllerCategoria@destroy');

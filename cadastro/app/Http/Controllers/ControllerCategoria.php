@@ -84,6 +84,10 @@ class ControllerCategoria extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cat = Categoria::find($id);
+        if(isset($cat)):
+          $cat->delete();
+        endif;
+        return redirect('/categorias');
     }
 }

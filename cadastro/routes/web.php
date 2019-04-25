@@ -23,4 +23,8 @@ Route::get('/categorias/novo', 'ControllerCategoria@create');
 
 Route::post('/categorias', 'ControllerCategoria@store');
 
+Route::get('/categorias/editar/{id}', 'ControllerCategoria@edit');
+
 Route::get('/categorias/apagar/{id}', 'ControllerCategoria@destroy');
+
+Route::post('/categorias/{id}', 'ControllerCategoria@update');

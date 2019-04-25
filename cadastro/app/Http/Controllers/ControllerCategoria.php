@@ -15,7 +15,7 @@ class ControllerCategoria extends Controller
     public function index()
     {
         $cats = Categoria::all();
-        return view('categorias', compact('cats'));
+        return view('categorias.categorias', compact('cats'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ControllerCategoria extends Controller
      */
     public function create()
     {
-        return view('novacategoria');
+        return view('categorias.novacategoria');
     }
 
     /**
@@ -63,7 +63,7 @@ class ControllerCategoria extends Controller
     {
         $cat = Categoria::find($id);
         if(isset($cat)):
-          return view('editarcategoria', compact('cat'));
+          return view('categorias.editarcategoria', compact('cat'));
         endif;
         return redirect('/categorias');
     }

@@ -15,8 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/produtos', 'ControllerProduto@index');
-
+//Rotas categorias
 Route::get('/categorias', 'ControllerCategoria@index');
 
 Route::get('/categorias/novo', 'ControllerCategoria@create');
@@ -28,3 +27,10 @@ Route::get('/categorias/editar/{id}', 'ControllerCategoria@edit');
 Route::get('/categorias/apagar/{id}', 'ControllerCategoria@destroy');
 
 Route::post('/categorias/{id}', 'ControllerCategoria@update');
+
+//Rotas Produtos
+Route::get('/produtos', 'ControllerProduto@index');
+
+Route::get('/produtos/novo', 'ControllerProduto@create');
+
+Route::post('/produtos', 'ControllerProduto@store');

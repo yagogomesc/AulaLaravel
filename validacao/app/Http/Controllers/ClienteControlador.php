@@ -37,7 +37,7 @@ class ClienteControlador extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required|min:5|max:10'
+            'nome' => 'required|min:3|max:20|unique:clientes'
         ]);
         $cliente = new Cliente();
         $cliente->nome = $request->input('nome');
@@ -46,7 +46,7 @@ class ClienteControlador extends Controller
         $cliente->email = $request->input('email');
         $cliente->save();
 
-        redirect("/");
+        return redirect("/");
     }
 
     /**

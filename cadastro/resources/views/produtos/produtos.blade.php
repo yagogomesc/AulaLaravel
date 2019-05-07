@@ -39,7 +39,7 @@
 @endif
       </div>
       <div class="card-footer">
-        <a href="/AulaLaravel/cadastro/public/produtos/novo" class="btn btn-primary btn-sm" role="button">Novo produto</a>
+        <button class="btn btn-primary btn-sm" role="button" onClick="novoProduto()">Novo produto</a>
       </div>
     </div>
 
@@ -90,4 +90,16 @@
         </div>
       </div>
     </div>
+@endsection
+
+@section('javascript')
+  <script type="text/javascript">
+      function novoProduto(){
+        $('#nomeProduto').val('');
+        $('#precoProduto').val('');
+        $('#quantidadeProduto').val('');
+        $('#departamentoProduto').val('');
+        $('#dlgProdutos').modal('show');
+      }
+  </script>
 @endsection

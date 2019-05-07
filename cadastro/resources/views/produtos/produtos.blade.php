@@ -42,4 +42,52 @@
         <a href="/AulaLaravel/cadastro/public/produtos/novo" class="btn btn-primary btn-sm" role="button">Novo produto</a>
       </div>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="dlgProdutos">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form class="form-horizontal" id="formProduto">
+            <div class="modal-header">
+              <h5 class="modal-title">Novo produto</h5>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="id" class="form-control">
+              <div class="form-group">
+                <label for="nomeProduto" class="control-label">Nome do Produto</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="nomeProduto" placeholder="Nome do produto">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="precoProduto" class="control-label">Preço do Produto</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="precoProduto" placeholder="Preço do produto">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="quantidadeProduto" class="control-label">Quantidade do Produto</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="quantidadeProduto" placeholder="Quantidade do produto">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="nomeProduto" class="control-label">Nome do Produto</label>
+                <div class="input-group">
+                  <select type="text" class="form-control" id="departamentoProduto">
+
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="cancel" class="btn btn-sencondary" data-dissmiss="modal">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 @endsection

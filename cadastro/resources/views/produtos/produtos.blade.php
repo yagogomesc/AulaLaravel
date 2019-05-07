@@ -74,9 +74,9 @@
               </div>
 
               <div class="form-group">
-                <label for="nomeProduto" class="control-label">Nome do Produto</label>
+                <label for="categoriaProduto" class="control-label">Categoria</label>
                 <div class="input-group">
-                  <select type="text" class="form-control" id="departamentoProduto">
+                  <select type="text" class="form-control" id="categoriaProduto">
 
                   </select>
                 </div>
@@ -101,5 +101,20 @@
         $('#departamentoProduto').val('');
         $('#dlgProdutos').modal('show');
       }
+      function carregarCategorias(){
+        $.getJSON('/AulaLaravel/cadastro/public/api/categorias', function(data) {
+          console.log(data);
+
+          for(i=0; i<data.length;i++){
+            opcao = '<option value="' + data[i].id + '">' +
+            data[i].nome + '</option>';
+            $('#categoriaProduto').append(opcao);
+          }
+        });
+      }
+
+      $(function(){
+        carregarCategorias();
+      });
   </script>
 @endsection

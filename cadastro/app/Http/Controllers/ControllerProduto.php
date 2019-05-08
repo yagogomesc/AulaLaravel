@@ -8,6 +8,11 @@ use App\Categoria;
 
 class ControllerProduto extends Controller
 {
+
+    public function indexView()
+    {
+        return view('produtos.produtos');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,7 @@ class ControllerProduto extends Controller
     public function index()
     {
         $products = Produto::all();
-        return view('produtos.produtos', compact('products'));
+        return $products->toJson();
     }
 
     /**

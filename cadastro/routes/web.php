@@ -29,7 +29,7 @@ Route::get('/categorias/apagar/{id}', 'ControllerCategoria@destroy');
 Route::post('/categorias/{id}', 'ControllerCategoria@update');
 
 //Rotas Produtos
-Route::get('/produtos', 'ControllerProduto@index');
+Route::get('/produtos', 'ControllerProduto@indexView');
 
 Route::get('/produtos/novo', 'ControllerProduto@create');
 

@@ -4,8 +4,7 @@
     <div class="card border">
       <div class="card-body">
         <h5 class="card-title">Produtos</h5>
-@if(count($products) > 0)
-        <table class="table table-ordered table-hover">
+        <table class="table table-ordered table-hover" id="tabelaProdutos">
           <thead>
             <tr>
               <th>Código</th>
@@ -17,26 +16,8 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($products as $product)
-              <tr>
-                <td>{{$product->id}}</td>
-                <td>{{$product->nome}}</td>
-                <td>{{$product->estoque}}</td>
-                <td>{{$product->preco}}</td>
-                <td>{{$product->categoria_id}}</td>
-                <td>
-                  <a href="/AulaLaravel/cadastro/public/produtos/editar/{{$product->id}}" class="btn btn-primary btn-sm">
-                    Editar
-                  </a>
-                  <a href="/AulaLaravel/cadastro/public/produtos/apagar/{{$product->id}}" class="btn btn-danger btn-sm">
-                    Apagar
-                  </a>
-                </td>
-              </tr>
-            @endforeach
           </tbody>
         </table>
-@endif
       </div>
       <div class="card-footer">
         <button class="btn btn-primary btn-sm" role="button" onClick="novoProduto()">Novo produto</a>
@@ -93,6 +74,7 @@
 @endsection
 
 @section('javascript')
+
   <script type="text/javascript">
       function novoProduto(){
         $('#nomeProduto').val('');
@@ -113,8 +95,34 @@
         });
       }
 
+      function carregarProdutos(){
+        $.getJSON('/AulaLaravel/cadastro/public/api/produtos', function(produtos){
+          for(i=0;i<produtos.length;i++){
+            linha = montarLinha(produtos[i]);
+            $('#tabelaProdutos>tbody').append(linha);
+          }
+        });
+      }
+
+      function montarLinha(p){
+
+          var linha = "<tr>" +
+              "<td>" + p.id + "</td>" +
+              "<td>" + p.nome + "</td>" +
+              "<td>" + p.estoque + "</td>" +
+              "<td>" + p.preco + "</td>" +
+              "<td>" + p.categoria_id + "</td>" +
+              "<td>" +
+                  '<button class="btn btn-sm btn-primary"> Editar</button>' +
+                  '<button class="btn btn-sm btn-danger"> Editar</button>' +
+              "</td>" +
+              "</tr>";
+          return linha;
+      }
+
       $(function(){
         carregarCategorias();
+        carregarProdutos();
       });
   </script>
 @endsection

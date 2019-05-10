@@ -49,7 +49,7 @@ class ControllerProduto extends Controller
         $product->preco = $request->input('precoProduto');
         $product->categoria_id = $request->input('categoriaProduto');
         $product->save();
-        return redirect('/produtos');
+        return json_encode($product);
     }
 
     /**

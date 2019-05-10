@@ -127,6 +127,26 @@
           return linha;
       }
 
+      function criarProduto(){
+
+        prod = {
+          nomeProduto: $("#nomeProduto").val(),
+          precoProduto: $("#precoProduto").val(),
+          estoqueProduto: $("#quantidadeProduto").val(),
+          categoriaProduto: $("#categoriaProduto").val()
+        }
+
+        $.post("/AulaLaravel/cadastro/public/api/produtos", prod, function(data){
+          console.log(data);
+        });
+      }
+
+      $("#formProduto").submit(function(event){
+          event.preventDefault();
+          criarProduto();
+          $("#dlgProdutos").modal('hide');
+      });
+
       $(function(){
         carregarCategorias();
         carregarProdutos();

@@ -87,9 +87,10 @@
         $('#nomeProduto').val('');
         $('#precoProduto').val('');
         $('#quantidadeProduto').val('');
-        $('#departamentoProduto').val('');
+        $('#categoriaProduto').val('');
         $('#dlgProdutos').modal('show');
       }
+      
       function carregarCategorias(){
         $.getJSON('/api/categorias', function(data) {
           console.log(data);
@@ -100,6 +101,20 @@
             $('#categoriaProduto').append(opcao);
           }
         });
+      }
+
+      function editar(id){
+
+        $.getJSON('/api/produtos/'+id, function(data) {
+          console.log(data);
+
+          $('#nomeProduto').val(data.nome);
+          $('#precoProduto').val(data.preco);
+          $('#quantidadeProduto').val(data.estoque);
+          $('#categoriaProduto').val(data.categoria_id);
+          $('#dlgProdutos').modal('show');
+        });
+
       }
 
       function remover(id){

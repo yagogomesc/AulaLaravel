@@ -60,7 +60,11 @@ class ControllerProduto extends Controller
      */
     public function show($id)
     {
-        //
+      $prod = Produto::find($id);
+      if(isset($prod)):
+          return json_encode($prod);
+      endif;
+      return response('Produto não encontrado', 404);
     }
 
     /**
@@ -83,7 +87,16 @@ class ControllerProduto extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $prod = Produto::find($id);
+        if(isset($prod)):
+            $product->nome = $request->input('nomeProduto');
+            $product->estoque = $request->input('estoqueProduto');
+            $product->preco = $request->input('precoProduto');
+            $product->categoria_id = $request->input('categoriaProduto');
+            $product->save();
+            return json_encode($prod);
+        endif;
+        return response('Produto não encontrado', 404);
     }
 
     /**

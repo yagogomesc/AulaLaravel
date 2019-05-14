@@ -89,11 +89,11 @@ class ControllerProduto extends Controller
     {
         $prod = Produto::find($id);
         if(isset($prod)):
-            $product->nome = $request->input('nomeProduto');
-            $product->estoque = $request->input('estoqueProduto');
-            $product->preco = $request->input('precoProduto');
-            $product->categoria_id = $request->input('categoriaProduto');
-            $product->save();
+            $prod->nome = $request->input('nome');
+            $prod->estoque = $request->input('estoque');
+            $prod->preco = $request->input('preco');
+            $prod->categoria_id = $request->input('categoria_id');
+            $prod->save();
             return json_encode($prod);
         endif;
         return response('Produto não encontrado', 404);

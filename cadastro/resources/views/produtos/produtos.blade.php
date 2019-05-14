@@ -91,7 +91,7 @@
         $('#dlgProdutos').modal('show');
       }
       function carregarCategorias(){
-        $.getJSON('/AulaLaravel/cadastro/public/api/categorias', function(data) {
+        $.getJSON('/api/categorias', function(data) {
           console.log(data);
 
           for(i=0; i<data.length;i++){
@@ -102,8 +102,30 @@
         });
       }
 
+      function remover(id){
+
+          $.ajax({
+              type: "DELETE",
+              url: "/api/produtos/" + id,
+              context: this,
+              success: function(){
+                  console.log('Apagou OK');
+                  linhas = $("#tabelaProdutos>tbody>tr");
+                  e = linhas.filter(function(i, elemento){
+                    return elemento.cells[0].textContent == id;
+                  });
+                  if(e)
+                    e.remove();
+              },
+              error: function(error){
+                  console.log(error);
+              }
+          });
+
+      }
+
       function carregarProdutos(){
-        $.getJSON('/AulaLaravel/cadastro/public/api/produtos', function(produtos){
+        $.getJSON('/api/produtos', function(produtos){
           for(i=0;i<produtos.length;i++){
             linha = montarLinha(produtos[i]);
             $('#tabelaProdutos>tbody').append(linha);
@@ -120,8 +142,8 @@
               "<td>" + p.preco + "</td>" +
               "<td>" + p.categoria_id + "</td>" +
               "<td>" +
-                  '<button class="btn btn-sm btn-primary"> Editar</button>' +
-                  '<button class="btn btn-sm btn-danger"> Editar</button>' +
+                  '<button class="btn btn-sm btn-primary" onclick="editar('+ p.id +')"> Editar</button>' +
+                  '<button class="btn btn-sm btn-danger" onclick="remover('+ p.id +')"> Remover</button>' +
               "</td>" +
               "</tr>";
           return linha;
@@ -136,7 +158,7 @@
           categoriaProduto: $("#categoriaProduto").val()
         }
 
-        $.post("/AulaLaravel/cadastro/public/api/produtos", prod, function(data){
+        $.post("/api/produtos", prod, function(data){
           produto = JSON.parse(data);
           linha = montarLinha(produto);
           $('#tabelaProdutos>tbody').append(linha);

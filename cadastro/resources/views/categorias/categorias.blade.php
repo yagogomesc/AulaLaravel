@@ -20,8 +20,8 @@
                 <td>{{$cat->id}}</td>
                 <td>{{$cat->nome}}</td>
                 <td>
-                  <a href="/AulaLaravel/cadastro/public/categorias/editar/{{$cat->id}}" class="btn btn-sm btn-primary">Editar</a>
-                  <a href="/AulaLaravel/cadastro/public/categorias/apagar/{{$cat->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                  <a href="/categorias/editar/{{$cat->id}}" class="btn btn-sm btn-primary">Editar</a>
+                  <a href="/categorias/apagar/{{$cat->id}}" class="btn btn-sm btn-danger">Apagar</a>
                 </td>
               </tr>
 
@@ -31,7 +31,7 @@
 @endif
       </div>
       <div class="card-footer">
-        <a href="/AulaLaravel/cadastro/public/categorias/novo" class="btn btn-sm btn-primary" role="button">Nova categoria</a>
+        <a href="/categorias/novo" class="btn btn-sm btn-primary" role="button">Nova categoria</a>
       </div>
     </div>
 @endsection

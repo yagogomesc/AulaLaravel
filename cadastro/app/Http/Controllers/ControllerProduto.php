@@ -83,7 +83,7 @@ class ControllerProduto extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -94,6 +94,11 @@ class ControllerProduto extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prod = Produto::find($id);
+        if(isset($prod)):
+          $prod->delete();
+          return response('OK', 200);
+        endif;
+        return response('Produto não encontrado', 404);
     }
 }

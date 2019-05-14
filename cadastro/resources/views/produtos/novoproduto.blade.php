@@ -4,7 +4,7 @@
 
 <div class="card border">
   <div class="card-body">
-    <form action="/AulaLaravel/cadastro/public/produtos" method="POST">
+    <form action="/produtos" method="POST">
       @csrf
         <div class="form-group">
           <label for="nomeProduto">Nome do produto</label>

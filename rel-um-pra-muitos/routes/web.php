@@ -43,3 +43,21 @@ Route::get('/produtos', function () {
 
     }
 });
+
+Route::get('/categoriasprodutos', function () {
+    $cat = Categoria::all();
+
+    foreach($cat as $c){
+
+        echo "<p>" . $c->id . " - " . $c->nome . "</p>";
+        $produtos = $c->produtos;
+        if(count($produtos) > 0){
+          echo "<ul>";
+          foreach ($produtos as $p){
+              echo "<li>" . $p->nome . "</li>";
+          }
+          echo "</ul>";
+        }
+
+    }
+});

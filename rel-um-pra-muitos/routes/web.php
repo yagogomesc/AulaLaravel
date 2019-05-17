@@ -92,3 +92,22 @@ Route::get('/removercat', function(){
     return $p->toJson();
 
 });
+
+Route::get('/adicionarproduto/{catid}', function($catid){
+
+    $cat = Categoria::with('produtos')->find($catid);
+
+    $p = new Produto();
+    $p->nome = "Meu novo produto louco";
+    $p->estoque = 20;
+    $p->preco = 500;
+
+    if(isset($cat)){
+        $cat->produtos()->save($p);
+    }
+
+    $cat->load('produtos');
+
+    return $cat->toJson();
+
+});

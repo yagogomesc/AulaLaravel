@@ -38,3 +38,26 @@ Route::get('/desenvolvedor_projetos', function () {
     }
     //return $desenvolvedores->toJson();
 });
+
+Route::get('/projetos', function(){
+    $projetos = Projeto::with('desenvolvedores')->get();
+    foreach($projetos as $p){
+      echo "<p>Nome do projeto: " . $p->nome . "</p>";
+      echo "<p>Horas do projeto: " . $p->estimativa_horas . "</p>";
+      if(count($p->desenvolvedores) > 0){
+          echo "Desenvolvedores: <br>";
+          echo "<ul>";
+              foreach($p->desenvolvedores as $d){
+                echo "<li>";
+                  echo "Nome: " . $d->nome . " | ";
+                  echo "Cargo: " . $d->campo . " | ";
+                  echo "Horas semanais: " . $d->pivot->horas_semanais;
+                echo "</li>";
+              }
+          echo "</ul>";
+
+      }
+      echo "<hr>";
+    }
+    //return $projetos->toJson();
+});

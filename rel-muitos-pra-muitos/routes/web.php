@@ -72,3 +72,12 @@ Route::get('/alocar ', function(){
         ]);
     }
 });
+
+Route::get('/desalocar', function(){
+    $proj = Projeto::find(4);
+    if(isset($proj)){
+
+      $proj->desenvolvedores()->detach([1,2,3]);
+
+    }
+});

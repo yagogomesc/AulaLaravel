@@ -8,7 +8,7 @@ class UsuarioControlador extends Controller
 {
 
     public function __construct(){
-        $this->middleware('primeiro');
+        //$this->middleware('primeiro');
     }
 
     public function index(){

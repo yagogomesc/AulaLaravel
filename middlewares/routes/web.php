@@ -11,6 +11,6 @@
 |
 */
 
-use App\Http\Middleware\PrimeiroMiddleware;
+//use App\Http\Middleware\PrimeiroMiddleware;
 
 Route::get('/usuarios', 'UsuarioControlador@index');

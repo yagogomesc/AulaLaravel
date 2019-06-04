@@ -18,6 +18,14 @@ class ClienteControlador extends Controller
         $clientes = Cliente::paginate(10);
         return view('index', compact('clientes'));
     }
+    public function indexjs()
+    {
+        return view('indexjs');
+    }
+    public function indexjson()
+    {    
+        return Cliente::paginate(10);
+    }
 
     /**
      * Show the form for creating a new resource.

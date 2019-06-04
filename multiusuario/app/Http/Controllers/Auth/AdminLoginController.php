@@ -16,8 +16,8 @@ class AdminLoginController extends Controller
 
     public function login(Request $request){
         $this->validate($request, [
-            $this->username() => 'required|string',
-            'password' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required',
         ]);
 
         $credentials = [

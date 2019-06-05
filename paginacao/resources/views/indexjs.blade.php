@@ -13,7 +13,7 @@
             <div class="card text-center">
               <div class="card-header">Tabela de clientes</div>
               <div class="card-body">
-                <h5 class="card-title">
+                <h5  class="card-title" id="cardTitle">
 
                 </h5>
                 <table class="table table-hover" id="tabelaClientes">
@@ -99,7 +99,7 @@
               $("#paginator>ul").append(getItemAnterior(data));
 
               n = 10;
-              if(data.current_page - n/5 <= 1 ){
+              if(data.current_page - n/2 <= 1 ){
                 inicio = 1;
               }else if(data.last_page - data.current_page < n){
                 inicio = data.last_page - n + 1;
@@ -142,9 +142,11 @@
                 montarTabela(resp);
                 montarPaginator(resp);
                 $("#paginator>ul>li>a").click(function(){
-                  carregarClientes($(this).attr('pagina'))
+                  carregarClientes($(this).attr('pagina'));
                 });
-            })
+                $("#cardTitle").html("Exibindo " + resp.per_page + " clientes de " +
+                  resp.total + "(" + resp.from + " a " + resp.to + ")");
+            });
           }
           $(function(){
               carregarClientes(2);

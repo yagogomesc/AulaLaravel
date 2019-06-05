@@ -62,22 +62,24 @@
         <script type="text/javascript">
 
         function getItemProximo(data){
+          i = data.current_page + 1;
           if( data.last_page == data.current_page){
               s = '<li class="page-item disabled">';
           }else{
               s = '<li class="page-item">';
           }
-          s += '<a class="page-link" href="#">Próximo</a></li>';
+          s += '<a class="page-link" ' + 'pagina="'+ i +'" href="#">Próximo</a></li>';
           return s;
         }
 
           function getItemAnterior(data){
+            i = data.current_page - 1;
             if(1 == data.current_page){
                 s = '<li class="page-item disabled">';
             }else{
                 s = '<li class="page-item">';
             }
-            s += '<a class="page-link" href="#">Anterior</a></li>';
+            s += '<a class="page-link" ' + 'pagina="'+ i +'" href="#">Anterior</a></li>';
             return s;
           }
 
@@ -88,7 +90,7 @@
             }else{
                 s = '<li class="page-item">';
             }
-            s += '<a class="page-link" href="#">'+ i +'</a></li>';
+            s += '<a class="page-link" ' + 'pagina="'+ i +'" href="#">'+ i +'</a></li>';
             return s;
           }
 
@@ -139,10 +141,13 @@
                 console.log(resp);
                 montarTabela(resp);
                 montarPaginator(resp);
+                $("#paginator>ul>li>a").click(function(){
+                  carregarClientes($(this).attr('pagina'))
+                });
             })
           }
           $(function(){
-              carregarClientes(1);
+              carregarClientes(2);
           });
         </script>
     </body>

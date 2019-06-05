@@ -96,10 +96,18 @@
               $("#paginator>ul>li").remove();
               $("#paginator>ul").append(getItemAnterior(data));
 
-              inicio=1;
-              fim=10
+              n = 10;
+              if(data.current_page - n/5 <= 1 ){
+                inicio = 1;
+              }else if(data.last_page - data.current_page < n){
+                inicio = data.last_page - n + 1;
+              }
+              else{
+                inicio = data.current_page - n/2;
+              }
 
-              for(i=inicio; i<fim;i++){
+              fim=inicio + n - 1;
+              for(i=inicio; i<=fim;i++){
                   s = getItem(data, i);
                   $("#paginator>ul").append(s);
               }
@@ -134,7 +142,7 @@
             })
           }
           $(function(){
-              carregarClientes(2);
+              carregarClientes(1);
           });
         </script>
     </body>

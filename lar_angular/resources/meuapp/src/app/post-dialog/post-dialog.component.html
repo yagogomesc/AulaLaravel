@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="space-around start">
+<div fxLayout="column" fxLayoutAlign="space-around left">
 
   <div fxLayout="row" fxLayoutAlign="space-between">
     <mat-form-field fxFlex="50">
@@ -23,7 +23,20 @@
   </div>
 
   <mat-form-field>
-    <textarea MatInput placeholder="Deixe aqui sua mensagem"></textarea>
+    <textarea matInput placeholder="Deixe aqui sua mensagem"></textarea>
   </mat-form-field>
+</div>
 
+<input type="file" style="display: none" #fileinput>
+
+<button mat-stroked-button color="primary" (click)="fileinput.click()">
+  <mat-icon>add_a_photo</mat-icon>
+  Adicionar uma foto
+</button>
+
+<br><br>
+
+<div style="text-align: center;">
+  <button mat-button color="primary">OK</button>
+  <button mat-button color="warn">Cancelar</button>
 </div>

@@ -4,9 +4,11 @@
 
 <mat-divider></mat-divider>
 
+<app-post-dialog></app-post-dialog>
+
 <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" >
   <app-post *ngFor="let p of posts" [meupost]="p"></app-post>
 </div>
 <button mat-fab color="primary" class="float-button">
-    <mat-icon>add</mat-icon>
+    <mat-icon>+</mat-icon>
 </button>

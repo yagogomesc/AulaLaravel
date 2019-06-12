@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-post-dialog',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostDialogComponent implements OnInit {
 
-  constructor() { }
+  private dados = {
+    post: new Post("", "", "", "", "", ""),
+    arquivo: null
+  };
+
+  constructor(
+    public dialogref: MatDialogRef<PostDialogComponent>
+  ) { }
 
   ngOnInit() {
   }

@@ -48,6 +48,10 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
     MatBadgeModule,
   ],
   providers: [{provide: APP_BASE_HREF, useValue: 'js'}],
+  entryComponents: [
+      PostDialogComponent
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

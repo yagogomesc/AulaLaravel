@@ -40,6 +40,8 @@ class PostControlador extends Controller
 
         $post->save();
 
+        return response($post, 200);
+
     }
 
     /**

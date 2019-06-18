@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from './post';
+import {
+  HttpRequest,
+  HttpEvent,
+  HttpEventType
+} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +24,21 @@ export class PostService {
           }
         }
     );
+  }
 
+  salvar(post: Post, file: File){
+    const uploadData = new FormData();
+    uploadData.append('nome', post.nome);
+    uploadData.append('email', post.email);
+    uploadData.append('titulo', post.titulo);
+    uploadData.append('subtitulo', post.subtitulo);
+    uploadData.append('mensagem', post.mensagem);
+    uploadData.append('arquivo', file, file.name);
+
+    this.http.post("/api/", uploadData).subscribe((event: any) => {
+        if(event.type == HttpEventType.Response){
+            console.log('');
+        }
+    });
   }
 }

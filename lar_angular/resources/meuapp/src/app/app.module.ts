@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './post/post.component';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import { PostService } from './post.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
     MatChipsModule,
     MatBadgeModule,
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: 'js'}],
+  providers: [{provide: APP_BASE_HREF, useValue: 'js'}, PostService],
   entryComponents: [
       PostDialogComponent
   ],

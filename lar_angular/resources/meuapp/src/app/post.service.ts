@@ -7,17 +7,18 @@ import { Post } from './post';
 })
 export class PostService {
   title = 'meuapp';
-  public posts: Post[] = [
-    new Post("Joao", "Meu Post", "Sub Joao", "joao@gmail.com", "Minha msg"),
-    new Post("Paulo", "Post do Paulo", "Sub Paulo", "paulo@gmail.com", "Msg do Paulo"),
-    new Post("Maria", "Post da Maria", "Sub Maria", "maria@gmail.com", "Msg Maria"),
-    new Post("Joao", "Meu Post", "Sub Joao", "joao@gmail.com", "Minha msg"),
-    new Post("Paulo", "Post do Paulo", "Sub Paulo", "paulo@gmail.com", "Msg do Paulo"),
-    new Post("Maria", "Post da Maria", "Sub Maria", "maria@gmail.com", "Msg Maria"),
-    new Post("Joao", "Meu Post", "Sub Joao", "joao@gmail.com", "Minha msg"),
-    new Post("Paulo", "Post do Paulo", "Sub Paulo", "paulo@gmail.com", "Msg do Paulo"),
-    new Post("Maria", "Post da Maria", "Sub Maria", "maria@gmail.com", "Msg Maria"),
-  ];
+  public posts: Post[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.http.get("/api/").subscribe(
+        (posts: any[]) => {
+          for(let p of posts){
+            this.posts.push(
+              new Post(p.nome, p.titulo, p.subtitulo, p.email, p.email, p.arquivo, p.id, p.likes)
+            );
+          }
+        }
+    );
+
+  }
 }

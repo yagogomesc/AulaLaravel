@@ -52,7 +52,7 @@ module.exports = "<div fxLayout=\"column\" fxLayoutAlign=\"space-around left\">\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card fxFlex class=\"card\">\n  <mat-card-header>\n    <div mat-card-avatar></div>\n    <mat-card-title>{{post.titulo}}</mat-card-title>\n    <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"/storage/{{post.arquivo}}\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      {{post.mensagem}}\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button color=\"primary\" (click)=\"like()\">LIKE</button>\n    <button mat-button>SHARE</button>\n    <mat-icon color=\"warning\" *ngIf=\"post.likes>0\" [matBadge]=\"post.likes\" matBadgePosition=\"above after\" matBadgeColor=\"warn\" matBadgeOverlap=\"false\">favorite</mat-icon>\n  </mat-card-actions>\n</mat-card>\n"
+module.exports = "<mat-card fxFlex class=\"card\">\n  <mat-card-header>\n    <div mat-card-avatar></div>\n    <mat-card-title>{{post.titulo}}</mat-card-title>\n    <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"/storage/{{post.arquivo}}\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      {{post.mensagem}}\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button color=\"primary\" (click)=\"like()\">LIKE</button>\n    <button mat-button>SHARE</button>\n    <mat-icon color=\"warn\" *ngIf=\"post.likes>0\" [matBadge]=\"post.likes\" matBadgePosition=\"above after\" matBadgeColor=\"warn\" matBadgeOverlap=\"false\">favorite</mat-icon>\n  </mat-card-actions>\n</mat-card>\n"
 
 /***/ }),
 
@@ -375,9 +375,11 @@ var PostService = /** @class */ (function () {
         });
     };
     PostService.prototype.like = function (id) {
+        var _this = this;
         this.http.get('/api/like/' + id)
             .subscribe(function (event) {
-            console.log(event);
+            var p = _this.posts.find(function (p) { return p.id == id; });
+            p.likes = event.likes;
         });
     };
     PostService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

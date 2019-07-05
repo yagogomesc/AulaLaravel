@@ -62,4 +62,14 @@ export class PostService {
           }
       );
   }
+
+  apagar(id: number){
+    this.http.delete('/api/' + id)
+      .subscribe((event) => {
+        console.log(event);
+        let i = this.posts.findIndex((p) => p.id == id);
+        if(i >= 0)
+          this.posts.splice(i, 1);
+      });
+  }
 }

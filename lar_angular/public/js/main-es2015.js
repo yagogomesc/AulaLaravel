@@ -52,7 +52,7 @@ module.exports = "<div fxLayout=\"column\" fxLayoutAlign=\"space-around left\">\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card fxFlex class=\"card\">\n  <mat-card-header>\n    <div mat-card-avatar></div>\n    <mat-card-title>{{post.titulo}}</mat-card-title>\n    <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"/storage/{{post.arquivo}}\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      {{post.mensagem}}\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button color=\"primary\" (click)=\"like()\">LIKE</button>\n    <button mat-button>SHARE</button>\n    <mat-icon color=\"warn\" *ngIf=\"post.likes>0\" [matBadge]=\"post.likes\" matBadgePosition=\"above after\" matBadgeColor=\"warn\" matBadgeOverlap=\"false\">favorite</mat-icon>\n  </mat-card-actions>\n</mat-card>\n"
+module.exports = "<mat-card fxFlex class=\"card\">\n  <mat-card-header>\n    <div mat-card-avatar></div>\n    <mat-card-title>{{post.titulo}}</mat-card-title>\n    <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"/storage/{{post.arquivo}}\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      {{post.mensagem}}\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button color=\"primary\" (click)=\"like()\">LIKE</button>\n    <button mat-button color=\"accent\" (click)=\"apagar()\">APAGAR</button>\n    <mat-icon color=\"warn\" *ngIf=\"post.likes>0\" [matBadge]=\"post.likes\" matBadgePosition=\"above after\" matBadgeColor=\"warn\" matBadgeOverlap=\"false\">favorite</mat-icon>\n  </mat-card-actions>\n</mat-card>\n"
 
 /***/ }),
 
@@ -369,6 +369,15 @@ let PostService = class PostService {
             p.likes = event.likes;
         });
     }
+    apagar(id) {
+        this.http.delete('/api/' + id)
+            .subscribe((event) => {
+            console.log(event);
+            let i = this.posts.findIndex((p) => p.id == id);
+            if (i >= 0)
+                this.posts.splice(i, 1);
+        });
+    }
 };
 PostService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -444,6 +453,9 @@ let PostComponent = class PostComponent {
     }
     like() {
         this.postService.like(this.post.id);
+    }
+    apagar() {
+        this.postService.apagar(this.post.id);
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

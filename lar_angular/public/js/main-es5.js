@@ -52,7 +52,7 @@ module.exports = "<div fxLayout=\"column\" fxLayoutAlign=\"space-around left\">\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card fxFlex class=\"card\">\n  <mat-card-header>\n    <div mat-card-avatar></div>\n    <mat-card-title>{{post.titulo}}</mat-card-title>\n    <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"/storage/{{post.arquivo}}\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      {{post.mensagem}}\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button color=\"primary\" (click)=\"like()\">LIKE</button>\n    <button mat-button>SHARE</button>\n    <mat-icon color=\"warn\" *ngIf=\"post.likes>0\" [matBadge]=\"post.likes\" matBadgePosition=\"above after\" matBadgeColor=\"warn\" matBadgeOverlap=\"false\">favorite</mat-icon>\n  </mat-card-actions>\n</mat-card>\n"
+module.exports = "<mat-card fxFlex class=\"card\">\n  <mat-card-header>\n    <div mat-card-avatar></div>\n    <mat-card-title>{{post.titulo}}</mat-card-title>\n    <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"/storage/{{post.arquivo}}\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      {{post.mensagem}}\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button color=\"primary\" (click)=\"like()\">LIKE</button>\n    <button mat-button color=\"accent\" (click)=\"apagar()\">APAGAR</button>\n    <mat-icon color=\"warn\" *ngIf=\"post.likes>0\" [matBadge]=\"post.likes\" matBadgePosition=\"above after\" matBadgeColor=\"warn\" matBadgeOverlap=\"false\">favorite</mat-icon>\n  </mat-card-actions>\n</mat-card>\n"
 
 /***/ }),
 
@@ -382,6 +382,16 @@ var PostService = /** @class */ (function () {
             p.likes = event.likes;
         });
     };
+    PostService.prototype.apagar = function (id) {
+        var _this = this;
+        this.http.delete('/api/' + id)
+            .subscribe(function (event) {
+            console.log(event);
+            var i = _this.posts.findIndex(function (p) { return p.id == id; });
+            if (i >= 0)
+                _this.posts.splice(i, 1);
+        });
+    };
     PostService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -460,6 +470,9 @@ var PostComponent = /** @class */ (function () {
     };
     PostComponent.prototype.like = function () {
         this.postService.like(this.post.id);
+    };
+    PostComponent.prototype.apagar = function () {
+        this.postService.apagar(this.post.id);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('meupost'),

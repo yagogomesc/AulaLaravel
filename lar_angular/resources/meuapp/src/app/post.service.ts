@@ -52,4 +52,13 @@ export class PostService {
         }
     });
   }
+
+  like(id: number){
+    this.http.get('/api/like/' + id)
+      .subscribe(
+          (event: any) => {
+            console.log(event);
+          }
+      );
+  }
 }

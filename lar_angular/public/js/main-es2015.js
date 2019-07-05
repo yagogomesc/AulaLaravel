@@ -52,7 +52,7 @@ module.exports = "<div fxLayout=\"column\" fxLayoutAlign=\"space-around left\">\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card fxFlex class=\"card\">\n  <mat-card-header>\n    <div mat-card-avatar></div>\n    <mat-card-title>{{post.titulo}}</mat-card-title>\n    <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"https://material.angular.io/assets/img/examples/shiba2.jpg\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      {{post.mensagem}}\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button>LIKE</button>\n    <button mat-button>SHARE</button>\n  </mat-card-actions>\n</mat-card>\n"
+module.exports = "<mat-card fxFlex class=\"card\">\n  <mat-card-header>\n    <div mat-card-avatar></div>\n    <mat-card-title>{{post.titulo}}</mat-card-title>\n    <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"/storage/{{post.arquivo}}\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      {{post.mensagem}}\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-button>LIKE</button>\n    <button mat-button>SHARE</button>\n  </mat-card-actions>\n</mat-card>\n"
 
 /***/ }),
 
@@ -349,9 +349,16 @@ let PostService = class PostService {
         uploadData.append('subtitulo', post.subtitulo);
         uploadData.append('mensagem', post.mensagem);
         uploadData.append('arquivo', file, file.name);
-        this.http.post("/api/", uploadData).subscribe((event) => {
+        this.http.post("/api/", uploadData, { reportProgress: true, observe: 'events' })
+            .subscribe((event) => {
             if (event.type == _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpEventType"].Response) {
-                console.log('');
+                //console.log(event);
+                let p = event.body;
+                this.posts.push(new _post__WEBPACK_IMPORTED_MODULE_3__["Post"](p.nome, p.titulo, p.subtitulo, p.email, p.email, p.arquivo, p.id, p.likes));
+            }
+            if (event.type == _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpEventType"].UploadProgress) {
+                console.log('UploadProgress');
+                console.log(event);
             }
         });
     }
